@@ -1,19 +1,22 @@
 package com.rissins.manna.controller;
 
+import com.rissins.manna.dto.request.LocationRequest;
+import com.rissins.manna.dto.response.LocationResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
+@Slf4j
 @CrossOrigin
 public class MainRestController {
 
     @PostMapping("/test")
-    public String test() {
-        return "111";
+    public LocationRequest test(@RequestBody LocationRequest locationRequest) {
+        log.info("호출완료");
+        log.info("Load Request = {}, {}", locationRequest.getLat(), locationRequest.getLon());
+        return locationRequest;
     }
 }
