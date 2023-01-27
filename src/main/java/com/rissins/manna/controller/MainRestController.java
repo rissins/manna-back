@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
@@ -14,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
 public class MainRestController {
 
     @PostMapping("/test")
-    public LocationRequest test(@RequestBody LocationRequest locationRequest) {
+    public List<LocationRequest> test(@RequestBody List<LocationRequest> locationRequest) {
         log.info("호출완료");
-        log.info("Load Request = {}, {}", locationRequest.getLat(), locationRequest.getLon());
+        log.info("Load Request = {}", locationRequest);
         return locationRequest;
     }
 }

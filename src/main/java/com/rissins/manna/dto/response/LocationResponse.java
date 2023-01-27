@@ -8,4 +8,5 @@ import lombok.Data;
 public class LocationResponse {
     int lat;
     int lon;
+    int middlePoint;
 }
