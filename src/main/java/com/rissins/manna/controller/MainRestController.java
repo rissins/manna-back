@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
 @Slf4j
-@CrossOrigin
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MainRestController {
 
     private final NaverMapService naverMapService;
