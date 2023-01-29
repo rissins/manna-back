@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class LocationResponse {
-    int lat;
-    int lon;
-    int middlePoint;
+    double lat;
+    double lon;
+    double middlePoint;
 }
