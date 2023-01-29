@@ -31,6 +31,6 @@ echo "> $JAR_NAME 실행"
 
 #nohup java -jar $JAR_NAME /dev/null 2> /dev/null < /dev/null &
 
-nohup java -jar $JAR_NAME --spring.config.location=file::/opt/codedeploy-agent/deployment-root/2dd2f36e-fd59-4c02-84e4-aa9925358a26/application.yml > $REPOSITORY/nohup.out 2>&1 &
+nohup java -jar -Dspring.config.location=/opt/codedeploy-agent/deployment-root/2dd2f36e-fd59-4c02-84e4-aa9925358a26/application.yml $JAR_NAME > $REPOSITORY/nohup.out 2>&1 &
 
 
