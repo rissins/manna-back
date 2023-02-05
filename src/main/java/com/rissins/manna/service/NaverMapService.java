@@ -74,7 +74,8 @@ public class NaverMapService {
             NaverMapGeoCodeResponse.AddressesEntity addressesEntity = naverMapGeoCodeResponse.getAddresses()
                     .stream()
                     .findFirst()
-                    .get();
+                    .orElse(null);
+            assert addressesEntity != null;
             double x = Double.parseDouble(addressesEntity.getX());
             double y = Double.parseDouble(addressesEntity.getY());
 
