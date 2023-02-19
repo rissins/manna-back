@@ -3,10 +3,13 @@ package com.rissins.manna.dto.response;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class LocationResponse {
-    double lat;
-    double lon;
-    double middlePoint;
+    List<Double> lat;
+    List<Double> lon;
+    double mdLat;
+    double mdLon;
 }

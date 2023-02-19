@@ -69,6 +69,11 @@ public class NaverMapService {
 
     public List<LocationResponse> convertAddressToLocation(List<NaverMapGeoCodeResponse> naverMapGeoCodeResponses) {
         List<LocationResponse> locationResponses = new ArrayList<>();
+        List<Double> lats = new ArrayList<>();
+        List<Double> lons = new ArrayList<>();
+
+        double mdLon = 0L;
+        double mdLat = 0L;
 
         for (NaverMapGeoCodeResponse naverMapGeoCodeResponse : naverMapGeoCodeResponses) {
             NaverMapGeoCodeResponse.AddressesEntity addressesEntity = naverMapGeoCodeResponse.getAddresses()
@@ -79,13 +84,22 @@ public class NaverMapService {
             double x = Double.parseDouble(addressesEntity.getX());
             double y = Double.parseDouble(addressesEntity.getY());
 
-            locationResponses.add(
-                    LocationResponse.builder()
-                            .lon(x)
-                            .lat(y)
-                            .build()
-            );
+            lons.add(x);
+            lats.add(y);
+
+            mdLon += x;
+            mdLat += y;
         }
+
+
+        locationResponses.add(
+                LocationResponse.builder()
+                        .lon(lons)
+                        .lat(lats)
+                        .mdLon(mdLon / 2 )
+                        .mdLat(mdLat / 2 )
+                        .build()
+        );
 
         return locationResponses;
     }
